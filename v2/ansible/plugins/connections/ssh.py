@@ -85,7 +85,7 @@ class Connection(ConnectionBase):
         if not C.HOST_KEY_CHECKING:
             self._common_args += ["-o", "StrictHostKeyChecking=no"]
 
-        if self._connection_info.port is not None:
+        if self._connection_info.port is not None and self._connection_info.port != 22:
             self._common_args += ["-o", "Port=%d" % (self._connection_info.port)]
         # FIXME: need to get this from connection info
         #if self.private_key_file is not None:

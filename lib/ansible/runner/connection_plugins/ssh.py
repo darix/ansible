@@ -81,7 +81,7 @@ class Connection(object):
         if not C.HOST_KEY_CHECKING:
             self.common_args += ["-o", "StrictHostKeyChecking=no"]
 
-        if self.port is not None:
+        if self.port is not None and self.port != 22:
             self.common_args += ["-o", "Port=%d" % (self.port)]
         if self.private_key_file is not None:
             self.common_args += ["-o", "IdentityFile=\"%s\"" % os.path.expanduser(self.private_key_file)]
